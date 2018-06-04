@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { RecipesPage } from './../recipes/recipes';
+import { ShoppingListPage } from './../shopping-list/shopping-list';
+  
 /**
  * Generated class for the TabsPage page.
  *
@@ -15,11 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
+  shoppingListPage = ShoppingListPage;
+  recipesPage = RecipesPage;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
   }
+
+
 
 }
