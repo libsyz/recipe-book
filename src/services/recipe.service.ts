@@ -21,8 +21,14 @@ export class RecipeService {
                 description: string, 
                 difficulty: string,
                 ingredients: Ingredient[]) {
+                    
+    this.recipesArray[index] = new Recipe(title, description, difficulty, ingredients)
 
-    this.recipesArray[index] = new Recipe(title, description, difficulty, ingredients)          
+    console.log("edited the recipe!");          
+    }
+
+    deleteRecipe(index: number) {
+        this.recipesArray.splice(index, 1);
     }
 
 }

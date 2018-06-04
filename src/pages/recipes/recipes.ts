@@ -1,8 +1,10 @@
+import { EditRecipePageModule } from './../edit-recipe/edit-recipe.module';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EditRecipePage } from './../edit-recipe/edit-recipe';
 import { RecipeService } from './../../services/recipe.service';
 import { Recipe } from './../../models/recipe';
+import { RecipePage } from './../recipe/recipe';
 
 
 
@@ -22,7 +24,8 @@ export class RecipesPage implements OnInit {
   allRecipes: Recipe[];
 
   constructor (public navCtrl: NavController,
-              private recipeService: RecipeService) {}
+              private recipeService: RecipeService,
+              private navParams: NavParams) {}
 
   ngOnInit() {
     this.allRecipes = this.recipeService.getRecipes();
@@ -35,6 +38,10 @@ export class RecipesPage implements OnInit {
 
   onNewRecipe() {
     this.navCtrl.push(EditRecipePage, {mode: 'New'});
+  }
+
+  goToRecipe(recipe: Recipe, index: number) {
+  this.navCtrl.push(RecipePage,{recipe: recipe, index: index });
   }
 
 
