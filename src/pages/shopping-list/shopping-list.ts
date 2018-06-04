@@ -1,6 +1,9 @@
+import { Ingredient } from './../../models/ingredient';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
+import { ShoppingListService } from './../../services/shopping-list.service';
+
 
 /**
  * Generated class for the ShoppingListPage page.
@@ -15,13 +18,29 @@ import { NgForm } from '@angular/forms';
   templateUrl: 'shopping-list.html',
 })
 export class ShoppingListPage {
+ ingredients: Ingredient[] = [];
 
-onSubmit(form) {
-  if (form.value.amount == "") {
-    console.log("Sorry amount can't be empty");
+ constructor(private shoppingListService: ShoppingListService) {
+   this.ingredients = this.shoppingListService.getItems();
+ }
+
+onAddItem(form) {
+  let myIngredient = form.value.ingredientName;
+  const myAmount = form.value.amount;
+  this.shoppingListService.addItem(myIngredient, myAmount);
+  this.loadItems();
+  form.reset();
   }
-  if (form.value.ingredientName == "") {
-    console.log("Sorry ingredientName can't be empty");
-  }
+
+deleteItem(index: number) {
+  this.shoppingListService.removeItem(index);
+  this.loadItems();
 }
+
+loadItems() {
+  this.ingredients = this.shoppingListService.getItems();
+}
+
+
+
 }

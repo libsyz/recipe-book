@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <form #form="ngForm" (ngSubmit)="onAddItem(form)">
     <ion-list>
       <ion-item>
         <ion-label floating>
@@ -31,4 +31,16 @@
     </ion-list>
     <button ion-button type="submit" block [disabled]="!form.valid"> Add </button>
   </form>
+
+  <!-- My approach would be 
+  -Get the list of items from the service
+-Show it only if the value of the array is bigger than 1
+-then apply a list with an NG For to display them -->
+<ion-list>
+  <ion-item *ngFor="let ingredient of ingredients; let i = index" (tap)="deleteItem(index)">
+    <h2> {{ ingredient.name }} - amount: {{ ingredient.amount }} </h2>
+  </ion-item>
+
+</ion-list>  
+  
 </ion-content>
