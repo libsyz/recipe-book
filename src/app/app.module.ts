@@ -11,6 +11,7 @@ import { RecipesPage } from './../pages/recipes/recipes';
 import { RecipePage } from './../pages/recipe/recipe';
 import { EditRecipePage } from './../pages/edit-recipe/edit-recipe';
 import { ShoppingListService } from './../services/shopping-list.service';
+import { RecipeService } from './../services/recipe.service';
 
 
 
@@ -40,7 +41,8 @@ import { ShoppingListService } from './../services/shopping-list.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ShoppingListService
+    ShoppingListService,
+    RecipeService
   ]
 })
 export class AppModule {}
